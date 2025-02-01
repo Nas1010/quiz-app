@@ -30,6 +30,8 @@ To run the project locally, follow these steps:
 
 This project is deployed on Vercel. You can access the live quiz at:
 
+https://quiz-fb8jsndjt-nas1010s-projects.vercel.app/
+
 # Usage
 
 - Click on an option to answer the question.
