@@ -1,8 +1,6 @@
-# React + Vite
+# README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Macbeth Quiz
 
-Currently, two official plugins are available:
+A quick-fire quiz app designed to test students' knowledge of Shakespeare's Macbeth. This app contains 5 multiple-choice questions that help students recall key facts and details from the play. It's a fun and interactive way to check how well you know the play, suitable for classroom use or self-study.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
