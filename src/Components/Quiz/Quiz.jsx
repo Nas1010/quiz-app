@@ -4,45 +4,42 @@ import {data} from "../../assets/data"
 
 const Quiz = () => {
   let [index, setIndex] = useState(0)
-  let [question, setQuestion] = useState(data[index])
+  let [question, setQuestion] = useState(data[0]) // Start with the first question
   let [lock, setLock] = useState(false)
   let [score, setScore] = useState(0)
   let [result, setResult] = useState(false)
 
-  let Option1 = useRef(null)
-  let Option2 = useRef(null)
-  let Option3 = useRef(null)
-  let Option4 = useRef(null)
-
-  let optionArray = [Option1, Option2, Option3, Option4]
+  let optionRefs = useRef([])
 
   const checkAns = (e, ans) => {
-    if (lock === false) {
+    if (!lock) {
       if (question.ans === ans) {
         e.target.classList.add("correct")
-        setLock(true)
         setScore((prev) => prev + 1)
       } else {
         e.target.classList.add("wrong")
-        setLock(true)
-        optionArray[question.ans - 1].current.classList.add("correct")
+        optionRefs.current[question.ans - 1].classList.add("correct")
       }
+      setLock(true)
     }
   }
 
   const next = () => {
-    if (lock === true) {
+    if (lock) {
       if (index === data.length - 1) {
         setResult(true)
-        return 0
+        return
       }
-      setIndex(++index)
-      setQuestion(data[index])
+
+      setIndex((prevIndex) => {
+        let newIndex = prevIndex + 1
+        setQuestion(data[newIndex])
+        return newIndex
+      })
+
       setLock(false)
-      optionArray.map((option) => {
-        option.current.classList.remove("wrong")
-        option.current.classList.remove("correct")
-        return null
+      optionRefs.current.forEach((option) => {
+        option.classList.remove("wrong", "correct")
       })
     }
   }
@@ -60,63 +57,35 @@ const Quiz = () => {
       <h1>Macbeth Quiz</h1>
       <hr />
       {result ? (
-        <></>
-      ) : (
         <>
-          <h2>
-            {" "}
-            {index + 1}. {question.question}{" "}
-          </h2>
-          <ul>
-            <li
-              ref={Option1}
-              onClick={(e) => {
-                checkAns(e, 1)
-              }}
-            >
-              {question.option1}
-            </li>
-            <li
-              ref={Option2}
-              onClick={(e) => {
-                checkAns(e, 2)
-              }}
-            >
-              {question.option2}
-            </li>
-            <li
-              ref={Option3}
-              onClick={(e) => {
-                checkAns(e, 3)
-              }}
-            >
-              {question.option3}
-            </li>
-            <li
-              ref={Option4}
-              onClick={(e) => {
-                checkAns(e, 4)
-              }}
-            >
-              {question.option4}
-            </li>
-          </ul>
-          <button onClick={next}>Next</button>
-          <div className="index">
-            {index + 1} of {data.length} questions
-          </div>
-        </>
-      )}
-      {result ? (
-        <>
-          {" "}
           <h2>
             You scored {score} out of {data.length}
           </h2>
           <button onClick={reset}>Reset</button>
         </>
       ) : (
-        <></>
+        <>
+          <h2>
+            {index + 1}. {question.question}
+          </h2>
+          <ul>
+            {Object.keys(question)
+              .filter((key) => key.startsWith("option")) // Get only the options
+              .map((key, i) => (
+                <li
+                  key={i}
+                  ref={(el) => (optionRefs.current[i] = el)}
+                  onClick={(e) => checkAns(e, i + 1)}
+                >
+                  {question[key]}
+                </li>
+              ))}
+          </ul>
+          <button onClick={next}>Next</button>
+          <div className="index">
+            {index + 1} of {data.length} questions
+          </div>
+        </>
       )}
     </div>
   )
