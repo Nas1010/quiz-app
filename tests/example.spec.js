@@ -1,0 +1,65 @@
+import { test, expect } from '@playwright/test';
+
+test('has title', async ({ page }) => {
+  await page.goto('http://localhost:5173/');
+
+  await expect(page).toHaveTitle(/Macbeth Quiz/);
+});
+
+test('codegen functionality test', async ({ page }) => {
+  await page.goto('http://localhost:5173/');
+  await page.getByRole('heading', { name: 'Macbeth Quiz' }).click();
+  await page.getByText('The Witches').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Macbeth', { exact: true }).click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Banquo').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Macbeth', { exact: true }).click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Lady Macbeth').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Banquo').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Lennox').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('of 25 questions').click();
+  await page.getByText('Thane of Cawdor').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('She is poisoned').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('A crowned child with a tree').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Macduff').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('That Banquo\'s sons will be').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('\'What’s done cannot be undone').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Banquo’s sons will be kings').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Because he wants Macduff to').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('A floating dagger').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('\'To be thus is nothing, but').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Blood').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Macduff').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('His soldiers').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('\'Look like the innocent').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('\'Beware Macduff! Beware the').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Because Banquo’s descendants').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('England').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByText('Macduff').click();
+  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByRole('heading', { name: 'You scored 9 out of' }).click();
+  await page.getByRole('button', { name: 'Reset' }).click();
+});

@@ -2,11 +2,11 @@
 
 # Macbeth Quiz
 
-A quick-fire quiz app designed to test your knowledge of Shakespeare's Macbeth. This app consists of 5 questions focused on key events and characters in the play, making it a great tool for students to test their recall in a fast-paced format.
+A quick-fire quiz app designed to test your knowledge of Shakespeare's Macbeth. This app consists of 25 questions focused on key events and characters in the play, making it a great tool for students to test their recall in a fast-paced format.
 
 # Features
 
-- 5 questions to test your knowledge of Macbeth.
+- 25 questions to test your knowledge of Macbeth.
 - Instant feedback for each answer with correct or wrong indicators.
 - Score tracking to see how well you did.
 - Next question button to move through the quiz.
@@ -17,6 +17,16 @@ A quick-fire quiz app designed to test your knowledge of Shakespeare's Macbeth. 
 React: A JavaScript library for building user interfaces.
 Vite: A fast and optimized build tool for React.
 CSS: For styling the quiz layout.
+
+# Testing 
+
+Playwright for End-to-End Testing
+
+# 🛡️ Security & Dependency Management
+
+CodeQL: Used for identifying vulnerabilities and ensuring secure code practices.
+Dependabot: Automatically updates dependencies to keep the project secure and up to date.
+
 
 # Installation
 
